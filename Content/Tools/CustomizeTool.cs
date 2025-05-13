@@ -69,9 +69,10 @@ namespace DragonLens.Content.Tools
 		public override void PopulateGrid(UIGrid grid)
 		{
 			var buttons = new List<ToolBrowserButton>();
-			for (int k = 0; k < ToolHandler.Tools.Count; k++)
+
+			foreach (Tool tool in ModContent.GetContent<Tool>())
 			{
-				buttons.Add(new ToolBrowserButton(ToolHandler.Tools[k], this));
+				buttons.Add(new ToolBrowserButton(tool, this));
 			}
 
 			grid.AddRange(buttons);
@@ -145,9 +146,9 @@ namespace DragonLens.Content.Tools
 
 		public override void SafeClick(UIMouseEvent evt)
 		{
-			ToolBrowser.TrackedToolbar.AddTool(tool);
+			ToolBrowser.TrackedToolbar?.AddTool(tool);
 
-			UILoader.GetUIState<ToolbarState>().Refresh();
+			UILoader.GetUIState<ToolbarState>()?.Refresh();
 		}
 	}
 }

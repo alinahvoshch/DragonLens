@@ -14,21 +14,10 @@ namespace DragonLens.Core.Systems.ToolSystem
 	/// </summary>
 	internal class ToolHandler : ModSystem
 	{
-		private static readonly List<Tool> tools = new();
-
 		/// <summary>
 		/// All tools currently loaded
 		/// </summary>
-		public static ReadOnlyCollection<Tool> Tools => tools.AsReadOnly();
-
-		/// <summary>
-		/// Adds a tool to the collection of loaded tools
-		/// </summary>
-		/// <param name="tool">The tool to add</param>
-		internal static void AddTool(Tool tool)
-		{
-			tools.Add(tool);
-		}
+		public static ReadOnlyCollection<Tool> Tools => ModContent.GetContent<Tool>().ToList().AsReadOnly();
 
 		/// <summary>
 		/// Helper method for quickly sending the packet of a given tool from outside of itself
@@ -47,7 +36,7 @@ namespace DragonLens.Core.Systems.ToolSystem
 		public static void HandlePacket(BinaryReader reader, int sender)
 		{
 			string tool = reader.ReadString();
-			Tool target = Tools.FirstOrDefault(n => n.Name == tool);
+			Tool target = ModContent.Find<Tool>(tool);
 
 			ModLoader.GetMod("DragonLens").Logger.Info($"Recieved packet for tool {tool} from {sender}");
 
@@ -70,7 +59,7 @@ namespace DragonLens.Core.Systems.ToolSystem
 				if (tag is null)
 					return;
 
-				foreach (Tool tool in Tools)
+				foreach (Tool tool in ModContent.GetContent<Tool>())
 				{
 					if (tag.ContainsKey(tool.Name))
 						tool.LoadData(tag.Get<TagCompound>(tool.Name));
@@ -91,7 +80,7 @@ namespace DragonLens.Core.Systems.ToolSystem
 		{
 			var tag = new TagCompound();
 
-			foreach (Tool tool in Tools)
+			foreach (Tool tool in ModContent.GetContent<Tool>())
 			{
 				var toolTag = new TagCompound();
 				tool.SaveData(toolTag);
@@ -179,7 +168,9 @@ namespace DragonLens.Core.Systems.ToolSystem
 		/// <param name="triggersSet"></param>
 		public override void ProcessTriggers(TriggersSet triggersSet)
 		{
-			foreach (Tool tool in ToolHandler.Tools)
+			IEnumerable<Tool> content = ModContent.GetContent<Tool>();
+
+			foreach (Tool tool in ModContent.GetContent<Tool>())
 			{
 				if (tool.keybind.JustPressed)
 				{
