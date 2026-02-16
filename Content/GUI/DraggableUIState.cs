@@ -119,6 +119,13 @@ namespace DragonLens.Content.GUI
 			if (BoundingBox.Contains(Main.MouseScreen.ToPoint()))
 				Main.LocalPlayer.mouseInterface = true;
 
+			if (!new Rectangle(0, 0, Main.screenWidth, Main.screenHeight).Contains(BoundingBox))
+			{
+				basePos.X = MathHelper.Clamp(basePos.X, 0, Main.screenWidth - width);
+				basePos.Y = MathHelper.Clamp(basePos.Y, 0, Main.screenHeight - height);
+				RecalculateEverything();
+			}
+
 			DraggableUdpate(gameTime);
 		}
 

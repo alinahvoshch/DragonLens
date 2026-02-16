@@ -148,7 +148,7 @@ namespace DragonLens.Content.Tools.Gameplay
 			Append(freezeButton);
 
 			width = 400;
-			height = 170;
+			height = 260;
 		}
 
 		public override void AdjustPositions(Vector2 newPos)
