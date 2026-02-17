@@ -54,8 +54,10 @@ namespace DragonLens.Content.Tools.Developer
 
 			foreach (Mod mod in ModLoader.Mods)
 			{
+#if !DEBUG
 				if (mod is DragonLens)
 					continue;
+#endif
 
 				AssetRepository repo = mod.Assets;
 
@@ -84,8 +86,10 @@ namespace DragonLens.Content.Tools.Developer
 
 			foreach (Mod mod in ModLoader.Mods)
 			{
+#if !DEBUG
 				if (mod is DragonLens)
 					continue;
+#endif
 
 				filters.AddFilter(new AssetModFilter(mod));
 			}

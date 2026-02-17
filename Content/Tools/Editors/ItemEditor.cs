@@ -209,7 +209,7 @@ namespace DragonLens.Content.Tools.Editors
 			}
 
 			Rectangle side = new Rectangle(BoundingBox.X - 230, BoundingBox.Y + 50, 218, 598);
-			Helpers.GUIHelper.DrawBox(spriteBatch, side, ThemeHandler.BackgroundColor);
+			Helpers.GUIHelper.DrawBoxFancy(spriteBatch, side, ThemeHandler.BackgroundColor);
 
 			if (BoundingBox.Contains(Main.MouseScreen.ToPoint()) || side.Contains(Main.MouseScreen.ToPoint()))
 				PlayerInput.LockVanillaMouseScroll("DragonLens: Item Editor");

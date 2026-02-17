@@ -102,7 +102,7 @@ namespace DragonLens.Content.GUI
 
 			var target = new Rectangle((int)basePos.X, (int)basePos.Y, 574, 400);
 
-			GUIHelper.DrawBox(spriteBatch, target, ThemeHandler.BackgroundColor);
+			GUIHelper.DrawBoxFancy(spriteBatch, target, ThemeHandler.BackgroundColor);
 
 			Texture2D back = Assets.GUI.Gradient.Value;
 			var backTarget = new Rectangle((int)basePos.X + 8, (int)basePos.Y + 8, 474, 48);
@@ -138,7 +138,7 @@ namespace DragonLens.Content.GUI
 				icons.Add(new IconProviderButton(pair.Value));
 			}
 
-			Recalculate();
+			RecalculateEverything();
 		}
 	}
 
@@ -166,7 +166,7 @@ namespace DragonLens.Content.GUI
 				GUIHelper.DrawOutline(spriteBatch, target, GUIHelper.InvertColor(ThemeHandler.ButtonColor));
 
 			target.Inflate(-12, -12);
-			theme.DrawBox(spriteBatch, target, ThemeHandler.ButtonColor);
+			theme.DrawBoxFancy(spriteBatch, target, ThemeHandler.ButtonColor);
 
 			if (IsMouseHovering && !Main.mouseLeft)
 			{
