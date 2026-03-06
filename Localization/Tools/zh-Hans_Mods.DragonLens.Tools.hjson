@@ -60,7 +60,7 @@ ItemEditor: {
 	SetDefaults: 重置 (SetDefaults)
 
 	Filters: {
-		// FromMod: From mod:
+		// FromMod: From mod {0}
 		// FromVanilla: From Vanilla
 	}
 
@@ -923,7 +923,7 @@ AssetManager: {
 	}
 
 	Filters: {
-		// Mod.Description: Assets from {0}
+		// FromMod: Assets from {0}
 
 		Texture: {
 			// Name: Texture assets
