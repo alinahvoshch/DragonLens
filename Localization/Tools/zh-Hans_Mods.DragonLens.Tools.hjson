@@ -231,6 +231,7 @@ Godmode: {
 InfiniteReach: {
 	DisplayName: 建筑大师
 	Description: 你拥有无限的放置范围且能够快速地放置物块。
+	// SmartСursorWarn: Smart cursor is disabled with omnipotent building
 }
 
 Magnet: {

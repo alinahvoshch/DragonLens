@@ -259,6 +259,7 @@ Godmode: {
 InfiniteReach: {
 	DisplayName: Omnipotent building
 	Description: You have infinite reach and can place blocks super quickly
+	SmartСursorWarn: Smart cursor is disabled with omnipotent building
 }
 
 Magnet: {
